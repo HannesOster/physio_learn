@@ -6,9 +6,10 @@ const StyledHeader = styled.header`
   height: 80px;
   width: 100%;
   background-color: skyblue;
-  text-align: center;
   justify-content: center;
+  display: flex;
+  align-items: center;
 `;
 export default function Heading() {
-  return <StyledHeader>Physio</StyledHeader>;
+  return <StyledHeader>Physio-Krankheitsbilder</StyledHeader>;
 }
