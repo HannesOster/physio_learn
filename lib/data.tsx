@@ -22,7 +22,7 @@ export const diseases: Disease[] = [
     ],
     diagnosis: "Klinische Untersuchung, bildgebende Verfahren wie MRT oder CT",
     treatment:
-      "Physiotherapie, Schmerzmanagement, manuelle Therapie, in schweren Fällen chirurgischer Eingriff",
+      "Physiotherapie zur Schmerzlinderung, Übungen zur Verbesserung der Wirbelsäulenstabilität, Ergonomieberatung",
     prevention:
       "Rückenschonende Haltung, regelmäßige Bewegung, gezieltes Kräftigungstraining",
   },
@@ -40,7 +40,7 @@ export const diseases: Disease[] = [
     diagnosis:
       "Blutuntersuchungen (Rheumafaktor, Antikörper), klinische Untersuchung, bildgebende Verfahren",
     treatment:
-      "Medikamente, Physiotherapie, Ergotherapie, Bewegungstherapie, Patientenaufklärung",
+      "Medikamente, Physiotherapie zur Schmerzlinderung, Gelenkmobilisation, Übungen zur Erhaltung der Beweglichkeit",
     prevention:
       "Keine spezifische Prävention, aber gesunder Lebensstil kann helfen",
   },
@@ -48,63 +48,76 @@ export const diseases: Disease[] = [
     id: "3",
     name: "Schlaganfall (Hemiparese)",
     description:
-      "Ein Schlaganfall tritt auf, wenn die Blutversorgung zum Gehirn unterbrochen wird und neurologische Ausfälle verursacht.",
+      "Ein Schlaganfall tritt auf, wenn die Blutzufuhr zum Gehirn gestört wird und Teile des Gehirns geschädigt werden.",
     symptoms: ["Einseitige Lähmungen", "Sprach- und Koordinationsprobleme"],
-    diagnosis:
-      "Bildgebende Verfahren wie CT oder MRT, klinische Untersuchung, neurologische Tests",
+    diagnosis: "Bildgebende Verfahren wie CT oder MRT",
     treatment:
-      "Neurophysiotherapie, Sprachtherapie, Medikamente zur Blutverdünnung",
-    prevention: "Gesunde Ernährung, Bewegung, Blutdruckkontrolle",
+      "Physiotherapie zur Wiedererlangung der Bewegungsfähigkeit, Gangschulung, Muskelkräftigung",
+    prevention:
+      "Gesunde Lebensweise, Kontrolle von Risikofaktoren wie Bluthochdruck, Diabetes",
   },
   {
     id: "4",
     name: "Frakturen (Knochenbrüche)",
     description:
-      "Frakturen sind Unterbrechungen in der Kontinuität eines Knochens, die durch Verletzungen verursacht werden können.",
+      "Knochenbrüche treten auf, wenn die Knochen aufgrund von Verletzungen oder Schwäche brechen oder reißen.",
     symptoms: [
       "Schmerzen",
       "Schwellungen",
       "Deformität im betroffenen Bereich",
     ],
-    diagnosis: "Röntgenaufnahmen, manchmal CT oder MRT, klinische Untersuchung",
-    treatment: "Immobilisierung, Gips, Schienen, Physiotherapie, Chirurgie",
+    diagnosis: "Röntgenaufnahmen, manchmal CT oder MRT",
+    treatment:
+      "Physiotherapie zur Wiederherstellung der Beweglichkeit und Muskelstärke, ggf. Rehabilitation",
     prevention:
-      "Sicherheitsvorkehrungen, Knochengesundheit, gesunder Lebensstil",
+      "Sicherheitsvorkehrungen treffen, Sturzprävention, ausreichende Kalzium- und Vitamin-D-Zufuhr",
   },
   {
     id: "5",
     name: "Asthma",
     description:
-      "Asthma ist eine chronische Atemwegserkrankung, die zu Atemnot, Husten und Keuchen führt.",
+      "Asthma ist eine chronische Atemwegserkrankung, die zu Atembeschwerden und Entzündungen der Atemwege führt.",
     symptoms: ["Atemnot", "Husten", "Keuchen"],
-    diagnosis:
-      "Lungenfunktionstests (Spirometrie), klinische Bewertung, Allergietests",
+    diagnosis: "Lungenfunktionstests (Spirometrie), klinische Bewertung",
     treatment:
-      "Bronchodilatatoren, entzündungshemmende Medikamente, Atemtherapie, Bewegung",
-    prevention: "Vermeidung von Auslösern, Atemwegsreinigungstechniken",
+      "Medikamente, Atemtechniken, körperliches Training zur Verbesserung der Atemmuskelkraft",
+    prevention: "Vermeidung von Auslösern, regelmäßige körperliche Aktivität",
   },
   {
     id: "6",
     name: "Herzinfarkt",
     description:
-      "Ein Herzinfarkt tritt auf, wenn die Blutversorgung zum Herzmuskel unterbrochen wird und Herzgewebe abstirbt.",
+      "Ein Herzinfarkt tritt auf, wenn die Blutversorgung zum Herzmuskel gestört wird, was zu Gewebeschäden führt.",
     symptoms: ["Brustschmerzen", "Atemnot", "Schweißausbrüche"],
-    diagnosis: "EKG, Blutuntersuchungen, Koronarangiographie",
+    diagnosis: "EKG, Blutuntersuchungen",
     treatment:
-      "Notfallbehandlung, Medikamente, Herzrehabilitation, Änderungen des Lebensstils",
+      "Medikamente, kardiologische Rehabilitation, körperliches Training zur Verbesserung der Herzgesundheit",
     prevention:
-      "Gesunde Ernährung, körperliche Aktivität, Vermeidung von Risikofaktoren",
+      "Gesunde Ernährung, Bewegung, Kontrolle von Bluthochdruck und Cholesterin",
   },
   {
     id: "7",
     name: "Zerebralparese",
     description:
-      "Zerebralparese ist eine neurologische Störung, die Bewegungs- und Koordinationsprobleme verursacht.",
+      "Zerebralparese ist eine dauerhafte Bewegungs- und Haltungsstörung, die auf Gehirnschäden in der frühkindlichen Entwicklung zurückzuführen ist.",
     symptoms: ["Bewegungs- und Koordinationsprobleme", "Muskelsteifheit"],
-    diagnosis: "Klinische Untersuchung, Bildgebung, Entwicklungstests",
+    diagnosis: "Klinische Untersuchung, Bildgebung",
     treatment:
-      "Physiotherapie, Ergotherapie, Sprachtherapie, Medikamente, chirurgische Eingriffe",
-    prevention: "Gesunde Schwangerschaft, Vermeidung von Risikofaktoren",
+      "Physiotherapie zur Verbesserung der Mobilität und Muskelfunktion, ggf. Orthesen oder Hilfsmittel",
+    prevention:
+      "Pränatale Sorgfalt, Vermeidung von Risikofaktoren während der Schwangerschaft",
+  },
+  {
+    id: "8",
+    name: "Osteoporose",
+    description:
+      "Osteoporose ist eine Knochenerkrankung, die zu einer Verringerung der Knochendichte und einem erhöhten Frakturrisiko führt.",
+    symptoms: ["Knochenbrüche", "Rückenschmerzen", "verminderte Körpergröße"],
+    diagnosis: "Knochendichtemessung (DXA), klinische Bewertung",
+    treatment:
+      "Medikamente zur Knochenstärkung, Physiotherapie zur Verbesserung der Körperhaltung und Muskelkraft",
+    prevention:
+      "Kalzium- und Vitamin-D-reiche Ernährung, körperliche Aktivität, Verzicht auf Rauchen und übermäßigen Alkoholkonsum",
   },
   {
     id: "8",
@@ -121,55 +134,6 @@ export const diseases: Disease[] = [
   },
   {
     id: "9",
-    name: "Multiple Sklerose",
-    description:
-      "Multiple Sklerose ist eine chronisch entzündliche Erkrankung des Zentralnervensystems.",
-    symptoms: [
-      "Schwäche, Taubheit oder Kribbeln in den Gliedmaßen",
-      "Koordinationsschwierigkeiten",
-      "Sehstörungen",
-      "Ermüdung",
-    ],
-    diagnosis:
-      "Neurologische Untersuchung, MRT des Gehirns und Rückenmarks, Liquoruntersuchung",
-    treatment:
-      "Medikamente zur Krankheitsmodifikation, Physiotherapie, Ergotherapie, Rehabilitation",
-    prevention:
-      "Keine bekannte Prävention, aber gesunder Lebensstil kann helfen",
-  },
-
-  {
-    id: "10",
-    name: "Parkinson-Krankheit",
-    description:
-      "Parkinson-Krankheit ist eine neurodegenerative Erkrankung, die Bewegungsstörungen und andere Symptome verursacht.",
-    symptoms: [
-      "Tremor (Zittern)",
-      "Steifheit der Muskeln",
-      "Langsamkeit der Bewegungen",
-      "Gleichgewichtsprobleme",
-    ],
-    diagnosis:
-      "Klinische Untersuchung, Bewertung der Krankheitsgeschichte, Neurologische Tests",
-    treatment:
-      "Medikamente, Physiotherapie, Ergotherapie, Sprachtherapie, Tiefenhirnstimulation",
-    prevention: "Keine bekannte Prävention",
-  },
-  {
-    id: "13",
-    name: "Morbus Crohn",
-    description:
-      "Morbus Crohn ist eine entzündliche Darmerkrankung, die den Verdauungstrakt betrifft.",
-    symptoms: ["Bauchschmerzen", "Durchfall", "Gewichtsverlust", "Ermüdung"],
-    diagnosis:
-      "Endoskopie, Darmbiopsie, Bildgebende Verfahren, Blutuntersuchungen",
-    treatment:
-      "Medikamente, Ernährungstherapie, Chirurgie (in schweren Fällen)",
-    prevention: "Keine bekannte Prävention",
-  },
-
-  {
-    id: "14",
     name: "Fibromyalgie",
     description:
       "Fibromyalgie ist eine chronische Schmerzstörung, die Muskelschmerzen und Ermüdung verursacht.",
@@ -182,6 +146,54 @@ export const diseases: Disease[] = [
     diagnosis: "Ausschlussdiagnose, klinische Untersuchung, Schmerzpunkte",
     treatment:
       "Schmerzmanagement, Physiotherapie, Bewegung, Entspannungstechniken",
+    prevention: "Keine bekannte Prävention",
+  },
+  {
+    id: "10",
+    name: "Skoliose",
+    description:
+      "Skoliose ist eine seitliche Krümmung der Wirbelsäule, die zu Fehlstellungen und Einschränkungen führen kann.",
+    symptoms: [
+      "Veränderung der Körperhaltung",
+      "Asymmetrie der Schultern oder Hüften",
+      "Rückenschmerzen",
+    ],
+    diagnosis: "Klinische Untersuchung, Röntgenaufnahmen",
+    treatment:
+      "Physiotherapie zur Verbesserung der Wirbelsäulenhaltung, Übungen zur Kräftigung der Rückenmuskulatur, ggf. Korsetttherapie",
+    prevention:
+      "Frühe Erkennung, regelmäßige Untersuchungen während des Wachstums",
+  },
+  {
+    id: "11",
+    name: "Skoliose",
+    description:
+      "Skoliose ist eine seitliche Krümmung der Wirbelsäule, die zu Fehlstellungen und Einschränkungen führen kann.",
+    symptoms: [
+      "Veränderung der Körperhaltung",
+      "Asymmetrie der Schultern oder Hüften",
+      "Rückenschmerzen",
+    ],
+    diagnosis: "Klinische Untersuchung, Röntgenaufnahmen",
+    treatment:
+      "Physiotherapie zur Verbesserung der Wirbelsäulenhaltung, Übungen zur Kräftigung der Rückenmuskulatur, ggf. Korsetttherapie",
+    prevention:
+      "Frühe Erkennung, regelmäßige Untersuchungen während des Wachstums",
+  },
+  {
+    id: "12",
+    name: "Parkinson-Krankheit",
+    description:
+      "Parkinson-Krankheit ist eine neurologische Erkrankung, die Bewegungsprobleme und andere Symptome verursacht.",
+    symptoms: [
+      "Tremor",
+      "Steifheit der Muskulatur",
+      "Langsamkeit der Bewegungen",
+    ],
+    diagnosis:
+      "Klinische Untersuchung, Ausschluss anderer Erkrankungen, Bewertung von Symptomen",
+    treatment:
+      "Physiotherapie zur Verbesserung der Bewegungskontrolle, Gangtraining, Übungen zur Stärkung der Muskulatur",
     prevention: "Keine bekannte Prävention",
   },
 ];
