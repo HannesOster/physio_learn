@@ -119,19 +119,7 @@ export const diseases: Disease[] = [
     prevention:
       "Kalzium- und Vitamin-D-reiche Ernährung, körperliche Aktivität, Verzicht auf Rauchen und übermäßigen Alkoholkonsum",
   },
-  {
-    id: "8",
-    name: "Osteoporose",
-    description:
-      "Osteoporose ist eine Erkrankung, bei der die Knochen an Dichte verlieren und leicht brechen können.",
-    symptoms: ["Knochenbrüche", "Rückenschmerzen", "verminderte Körpergröße"],
-    diagnosis:
-      "Knochendichtemessung (DXA), klinische Bewertung, Frakturanamnese",
-    treatment:
-      "Medikamente, Ernährung, Physiotherapie, Sturzprävention, Krafttraining",
-    prevention:
-      "Knochenaufbau in jungen Jahren, Ernährung, körperliche Aktivität",
-  },
+
   {
     id: "9",
     name: "Fibromyalgie",
