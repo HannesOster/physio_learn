@@ -21,13 +21,26 @@ const DiseaseDetailWrapper = styled.div`
 
 const Heading = styled.h2`
   margin-bottom: 10px;
+  font-size: 24px;
 `;
 
 const SubHeading = styled.h3`
   margin-top: 20px;
+  font-size: 18px;
 `;
 
 const Paragraph = styled.p`
+  margin-top: 5px;
+  font-size: 16px;
+`;
+
+const SymptomList = styled.ul`
+  margin-top: 5px;
+  list-style: disc;
+  padding-left: 20px;
+`;
+
+const SymptomListItem = styled.li`
   margin-top: 5px;
 `;
 
@@ -47,7 +60,11 @@ export default function DiseaseDetail() {
         <SubHeading>Beschreibung:</SubHeading>
         <Paragraph>{disease.description}</Paragraph>
         <SubHeading>Symptome:</SubHeading>
-        <Paragraph>{disease.symptoms.join(", ")}</Paragraph>
+        <SymptomList>
+          {disease.symptoms.map((symptom, index) => (
+            <SymptomListItem key={index}>{symptom}</SymptomListItem>
+          ))}
+        </SymptomList>
         <SubHeading>Diagnose:</SubHeading>
         <Paragraph>{disease.diagnosis}</Paragraph>
         <SubHeading>Behandlung:</SubHeading>

@@ -10,6 +10,7 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
 `;
+
 export default function Heading() {
   return (
     <StyledHeader>

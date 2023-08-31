@@ -14,7 +14,7 @@ const DiseaseList = styled.ul`
   list-style: none;
   padding: 0;
   display: grid;
-  gap: 20px;
+  gap: 30px;
   grid-template-columns: 1fr;
 
   @media (min-width: 768px) {
