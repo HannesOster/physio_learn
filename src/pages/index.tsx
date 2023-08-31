@@ -11,14 +11,16 @@ const DiseaseItem = styled.li`
 `;
 
 interface Disease {
+  id: string;
   name: string;
-  symptoms: string[]; // Hinzugefügt
-  diagnosis: string; // Hinzugefügt
+  symptoms: string[];
+  diagnosis: string;
 }
 
-const diseases: Disease[] = [
+export const diseases: Disease[] = [
   {
     name: "Bandscheibenvorfall",
+    id: "1",
     symptoms: [
       "Rückenschmerzen",
       "Taubheitsgefühl",
@@ -29,6 +31,7 @@ const diseases: Disease[] = [
   },
   {
     name: "Rheumatoide Arthritis",
+    id: "2",
     symptoms: [
       "Gelenkschmerzen",
       "Schwellungen",
@@ -40,11 +43,13 @@ const diseases: Disease[] = [
   },
   {
     name: "Schlaganfall (Hemiparese)",
+    id: "3",
     symptoms: ["Einseitige Lähmungen", "Sprach- und Koordinationsprobleme"],
     diagnosis: "Bildgebende Verfahren wie CT oder MRT",
   },
   {
     name: "Frakturen (Knochenbrüche)",
+    id: "4",
     symptoms: [
       "Schmerzen",
       "Schwellungen",
@@ -54,21 +59,25 @@ const diseases: Disease[] = [
   },
   {
     name: "Asthma",
+    id: "5",
     symptoms: ["Atemnot", "Husten", "Keuchen"],
     diagnosis: "Lungenfunktionstests (Spirometrie), klinische Bewertung",
   },
   {
     name: "Herzinfarkt",
+    id: "6",
     symptoms: ["Brustschmerzen", "Atemnot", "Schweißausbrüche"],
     diagnosis: "EKG, Blutuntersuchungen",
   },
   {
     name: "Zerebralparese",
+    id: "7",
     symptoms: ["Bewegungs- und Koordinationsprobleme", "Muskelsteifheit"],
     diagnosis: "Klinische Untersuchung, Bildgebung",
   },
   {
     name: "Osteoporose",
+    id: "8",
     symptoms: ["Knochenbrüche", "Rückenschmerzen", "verminderte Körpergröße"],
     diagnosis: "Knochendichtemessung (DXA), klinische Bewertung",
   },
@@ -76,9 +85,9 @@ const diseases: Disease[] = [
 export default function Home() {
   return (
     <DiseaseList>
-      {diseases.map((disease, index) => (
-        <DiseaseItem key={index}>
-          <Link href={`/disease/${index}`}>{disease.name}</Link>
+      {diseases.map((disease) => (
+        <DiseaseItem key={disease.id}>
+          <Link href={`/disease/${disease.id}`}>{disease.name}</Link>
         </DiseaseItem>
       ))}
     </DiseaseList>

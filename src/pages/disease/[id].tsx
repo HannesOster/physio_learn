@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import { diseases } from "..";
 
 const DiseaseDetailWrapper = styled.div`
   padding: 20px;
@@ -13,10 +14,10 @@ interface Disease {
   diagnosis: string;
 }
 
-export default function DiseaseDetail({ disease }: { disease: Disease }) {
+export default function DiseaseDetail() {
   const router = useRouter();
   const { id } = router.query;
-
+  const disease = diseases.find((disease) => disease.id === id);
   if (!disease) {
     return <p>Loading...</p>;
   }
