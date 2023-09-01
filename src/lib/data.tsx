@@ -1,19 +1,38 @@
-interface Manifestation {
+export interface Manifestation {
   name: string;
   details: string[];
 }
 
-interface Disease {
+export interface SymptomDetails {
+  mainSymptom: string;
+  radiation: string;
+  accompanyingSymptoms: string[];
+}
+
+export interface Diagnosis {
+  blood?: string[];
+  urine?: string[];
+}
+
+export interface Treatment {
+  [key: string]: string[];
+}
+
+export interface Disease {
   id: string;
   name: string;
-  definition: string;
+  definition?: string;
   classification?: string;
   manifestations?: Manifestation[];
-  symptoms: string[];
-  diagnosis: string | string[];
-  treatment: string | string[];
+  symptoms: string[] | SymptomDetails;
+  diagnosis: string[] | Diagnosis;
+  treatment: string[] | Treatment;
   complications?: string[];
-  prognosis?: string | string[];
+  prognosis?: string[];
+  causes?: string[];
+  stages?: { [key: string]: any };
+  stoneTypes?: string[];
+  riskFactors?: string[];
 }
 export const diseases: Disease[] = [
   {
@@ -24,7 +43,6 @@ export const diseases: Disease[] = [
     classification: "Post-infektiöse GN, IgA-Nephropathie, RPGN",
     manifestations: [
       {
-        id: "1.1",
         name: "Poststreptokokken-GN",
         details: [
           "Manifestation: In der Regel 2 Wochen nach Infektion mit ß-hämolysierenden Streptokokken der Gruppe A",
@@ -61,6 +79,10 @@ export const diseases: Disease[] = [
       "In den meisten Fällen bis zu 90% Genesung",
       "Bei Erwachsenen bis zu 50% Übergang, möglicherweise zu RPGN",
     ],
+    causes: ["Unbekannt"],
+    stages: {},
+    stoneTypes: [],
+    riskFactors: [],
   },
   {
     id: "2",
@@ -90,10 +112,17 @@ export const diseases: Disease[] = [
       "RR Kontrollen",
       "Hypercholesterinämie Behandlung",
     ],
+    manifestations: [],
+    complications: [],
+    prognosis: [],
+    stages: {},
+    stoneTypes: [],
+    riskFactors: [],
   },
   {
     id: "3",
     name: "Analgetika Nephropathie (abakterielle interstitielle Nephritis)",
+    definition: "Auslöser sind hauptsächlich Analgetika",
     causes: [
       "Auslöser sind hauptsächlich Analgetika",
       "Kombinationen aus ASS, Paracetamol und Coffein",
@@ -108,6 +137,11 @@ export const diseases: Disease[] = [
       "Absetzen der Noxen",
       "Früherkennung zur Vermeidung einer chronischen Niereninsuffizienz",
     ],
+    manifestations: [],
+    prognosis: [],
+    stages: {},
+    stoneTypes: [],
+    riskFactors: [],
   },
   {
     id: "4",
@@ -122,7 +156,6 @@ export const diseases: Disease[] = [
       "Entstehen durch Auskristallisieren von Salzen",
       "Diese liegen in zu hoher Konzentration im Harn vor",
     ],
-    riskFactors: ["Harnstauungen", "Harnwegsinfekte", "Durst, Gewichtsabnahme"],
     symptoms: {
       mainSymptom:
         "Nieren- bzw. Harnleiterkolik - Heftigster an- und abschwellender Schmerz",
@@ -147,63 +180,10 @@ export const diseases: Disease[] = [
       "Litholyse",
       "Stoßwellenlithotripsie",
     ],
-  },
-  {
-    id: "5",
-    name: "Chronische Niereninsuffizienz (CNV)",
-    definition:
-      "Durch zunehmenden Ausfall von funktionsfähigem Nierengewebe reduziert sich die GFR. Dadurch kommt es zum Anstieg der Retentionswerte im Blut.",
-    causes: [
-      "Diabetische Nephropathie",
-      "Chronische GN und PN (Glomerulonephritis und Pyelonephritis)",
-      "Hypertensive Nephropathie",
-      "Analgetika Nephropathie",
-    ],
-    stages: {
-      "Stadien I - II": "Verlaufen ohne Symptome",
-      "Stadium III": "Beginnen urämische Symptome",
-      "Stadium I (Kompensation)": {
-        creatinine: "< 1,1 mg/dl",
-        filtrationImpairment: "Gering",
-        symptoms: "Keine Beschwerden des Patienten",
-        determination: "Nur über Clearance",
-      },
-      "Stadium II (kompensierte Retention)": {
-        creatinine: "< 6 mg/dl",
-        filtrationImpairment: "Deutlicher",
-        clinicalSymptoms: "Keine klinischen Symptome",
-      },
-      "Stadium III (präterminale Niereninsuffizienz)": {
-        creatinine: "< 10 mg/dl",
-        transitionToOliguria: "Ja",
-        increaseInRetentionValues: "Starke Erhöhung",
-        uremiaSymptoms: "Leichte bis mäßige",
-      },
-      "Stadium IV (terminale Niereninsuff.)": {
-        creatinine: "> 10 mg/dl",
-        fullUremiaSymptoms: "Ja",
-      },
-    },
-    symptoms: [
-      "Müdigkeit, Leistungsknick",
-      "Bewusstseinsstörungen",
-      "Übelkeit, Erbrechen, Durchfälle",
-      "Foetor uraemicus",
-      "Gelbgraue, schmutzige Haut",
-      "Renale Osteopathie",
-      "Arterielle HTN",
-      "Lungenödem",
-    ],
-    treatment: {
-      "Stadien I - III": [
-        "Eiweißrestriktion",
-        "Diurese",
-        "Senkung des RR (Blutdruck)",
-        "EPO Gabe (Erythropoietin)",
-        "Vitamin-D Gabe",
-      ],
-      "Stadium IV": ["Dialyse", "Transplantation"],
-    },
+    manifestations: [],
+    prognosis: [],
+    stages: {},
+    riskFactors: [],
   },
   {
     id: "6",
@@ -222,6 +202,11 @@ export const diseases: Disease[] = [
       "Radikale OP (Operation)",
       "Chemo und Radiatio (Chemotherapie und Strahlentherapie)",
     ],
-    prognosis: "5-Jahres-Überlebensrate ca. 90%",
+    prognosis: ["5-Jahres-Überlebensrate ca. 90%"],
+    manifestations: [],
+    complications: [],
+    stages: {},
+    stoneTypes: [],
+    riskFactors: [],
   },
 ];

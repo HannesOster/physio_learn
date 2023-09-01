@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { diseases } from "../../lib/data";
+import { diseases, Disease, Manifestation } from "../../lib/data";
 
 const Container = styled.div`
   display: flex;
@@ -20,34 +20,38 @@ const DiseaseDetailWrapper = styled.div`
 `;
 
 const Heading = styled.h2`
-  margin-bottom: 10px;
   font-size: 24px;
 `;
 
 const SubHeading = styled.h3`
-  margin-top: 20px;
   font-size: 18px;
+  margin-top: 10px;
 `;
 
 const Paragraph = styled.p`
-  margin-top: 5px;
   font-size: 16px;
+  margin-top: 5px;
 `;
 
-const SymptomList = styled.ul`
-  margin-top: 5px;
+const List = styled.ul`
   list-style: disc;
   padding-left: 20px;
 `;
 
-const SymptomListItem = styled.li`
+const ListItem = styled.li`
   margin-top: 5px;
 `;
+
+interface DiseaseDetailProps {
+  id: string;
+}
 
 export default function DiseaseDetail() {
   const router = useRouter();
   const { id } = router.query;
-  const disease = diseases.find((disease) => disease.id === id);
+  const disease: Disease | undefined = diseases.find(
+    (disease) => disease.id === id
+  );
 
   if (!disease) {
     return <p>Loading...</p>;
@@ -57,8 +61,12 @@ export default function DiseaseDetail() {
     <Container>
       <DiseaseDetailWrapper>
         <Heading>{disease.name}</Heading>
-        <SubHeading>Definition:</SubHeading>
-        <Paragraph>{disease.definition}</Paragraph>
+        {disease.definition && (
+          <>
+            <SubHeading>Definition:</SubHeading>
+            <Paragraph>{disease.definition}</Paragraph>
+          </>
+        )}
         {disease.classification && (
           <>
             <SubHeading>Klassifikation:</SubHeading>
@@ -68,56 +76,133 @@ export default function DiseaseDetail() {
         {disease.manifestations && disease.manifestations.length > 0 && (
           <>
             <SubHeading>Manifestationen:</SubHeading>
-            <ul>
-              {disease.manifestations.map((manifestation) => (
-                <li key={manifestation.id}>
-                  <Paragraph>{manifestation.name}</Paragraph>
-                  <ul>
-                    {manifestation.details.map((detail, index) => (
-                      <li key={index}>{detail}</li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
+            <List>
+              {disease.manifestations.map(
+                (manifestation: Manifestation, index: number) => (
+                  <ListItem key={index}>
+                    <SubHeading>{manifestation.name}</SubHeading>
+                    <List>
+                      {manifestation.details.map(
+                        (detail: string, index: number) => (
+                          <ListItem key={index}>{detail}</ListItem>
+                        )
+                      )}
+                    </List>
+                  </ListItem>
+                )
+              )}
+            </List>
           </>
         )}
-        <SubHeading>Symptome:</SubHeading>
-        <SymptomList>
-          {disease.symptoms.map((symptom, index) => (
-            <SymptomListItem key={index}>{symptom}</SymptomListItem>
-          ))}
-        </SymptomList>
-        <SubHeading>Diagnose:</SubHeading>
-        <Paragraph>
-          {Array.isArray(disease.diagnosis)
-            ? disease.diagnosis.join(", ")
-            : disease.diagnosis}
-        </Paragraph>
-        <SubHeading>Behandlung:</SubHeading>
-        <Paragraph>
-          {Array.isArray(disease.treatment)
-            ? disease.treatment.join(", ")
-            : disease.treatment}
-        </Paragraph>
+        {disease.symptoms && (
+          <>
+            <SubHeading>Symptome:</SubHeading>
+            <List>
+              {Array.isArray(disease.symptoms) ? (
+                disease.symptoms.map((symptom: string, index: number) => (
+                  <ListItem key={index}>{symptom}</ListItem>
+                ))
+              ) : (
+                <>
+                  <ListItem>
+                    Haupt-Symptom: {disease.symptoms.mainSymptom}
+                  </ListItem>
+                  <ListItem>
+                    Ausstrahlung: {disease.symptoms.radiation}
+                  </ListItem>
+                  {disease.symptoms.accompanyingSymptoms &&
+                    disease.symptoms.accompanyingSymptoms.length > 0 && (
+                      <>
+                        {" "}
+                        <SubHeading>Begleitsymptome:</SubHeading>
+                        <List>
+                          {disease.symptoms.accompanyingSymptoms.map(
+                            (accompanyingSymptom: string, index: number) => (
+                              <ListItem key={index}>
+                                {accompanyingSymptom}
+                              </ListItem>
+                            )
+                          )}
+                        </List>
+                      </>
+                    )}
+                </>
+              )}
+            </List>
+          </>
+        )}
+        {disease.diagnosis && (
+          <>
+            <SubHeading>Diagnose:</SubHeading>
+            <Paragraph>
+              {Array.isArray(disease.diagnosis) ? (
+                disease.diagnosis.join(", ")
+              ) : (
+                <>
+                  {disease.diagnosis.blood && (
+                    <>
+                      <SubHeading>Diagnose (Blut):</SubHeading>
+                      <Paragraph>
+                        {disease.diagnosis.blood.join(", ")}
+                      </Paragraph>
+                    </>
+                  )}
+                  {disease.diagnosis.urine && (
+                    <>
+                      <SubHeading>Diagnose (Urin):</SubHeading>
+                      <Paragraph>
+                        {disease.diagnosis.urine.join(", ")}
+                      </Paragraph>
+                    </>
+                  )}
+                </>
+              )}
+            </Paragraph>
+          </>
+        )}
+        {disease.treatment && (
+          <>
+            <SubHeading>Behandlung:</SubHeading>
+            <Paragraph>
+              {Array.isArray(disease.treatment) ? (
+                disease.treatment.join(", ")
+              ) : (
+                <>
+                  {Object.keys(disease.treatment).map(
+                    (key: string, index: number) => (
+                      <div key={index}>
+                        <SubHeading>{key}:</SubHeading>
+                        <Paragraph>
+                          {disease.treatment[key].join(", ")}
+                        </Paragraph>
+                      </div>
+                    )
+                  )}
+                </>
+              )}
+            </Paragraph>
+          </>
+        )}
         {disease.complications && disease.complications.length > 0 && (
           <>
             <SubHeading>Komplikationen:</SubHeading>
-            <ul>
-              {disease.complications.map((complication, index) => (
-                <li key={index}>{complication}</li>
-              ))}
-            </ul>
+            <List>
+              {disease.complications.map(
+                (complication: string, index: number) => (
+                  <ListItem key={index}>{complication}</ListItem>
+                )
+              )}
+            </List>
           </>
         )}
         {disease.prognosis && disease.prognosis.length > 0 && (
           <>
             <SubHeading>Prognose:</SubHeading>
-            <ul>
-              {disease.prognosis.map((prognosis, index) => (
-                <li key={index}>{prognosis}</li>
+            <List>
+              {disease.prognosis.map((prognosis: string, index: number) => (
+                <ListItem key={index}>{prognosis}</ListItem>
               ))}
-            </ul>
+            </List>
           </>
         )}
       </DiseaseDetailWrapper>
