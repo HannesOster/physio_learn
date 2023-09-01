@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { diseases, Disease, Manifestation } from "../../lib/data";
+import { diseases, Disease } from "../../lib/data";
 import Classification from "@/components/Classification/Classifcation";
 import Symptoms from "@/components/Symptoms/Symptoms";
 import Complications from "@/components/Complications/Complications";
@@ -52,10 +52,6 @@ export const HeadingList = styled.ul`
 export const ListItem = styled.li`
   margin-top: 5px;
 `;
-
-interface DiseaseDetailProps {
-  id: string;
-}
 
 export default function DiseaseDetail() {
   const router = useRouter();
