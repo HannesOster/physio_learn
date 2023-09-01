@@ -1,16 +1,17 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { diseases, Disease, Manifestation } from "../../lib/data";
+import Classification from "@/components/Header/Classification/Classifcation";
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+
   min-height: 100vh;
   background-color: #f0f0f0;
 `;
 
-const DiseaseDetailWrapper = styled.div`
+export const DiseaseDetailWrapper = styled.div`
   margin-top: 100px;
   max-width: 800px;
   padding: 20px;
@@ -20,30 +21,30 @@ const DiseaseDetailWrapper = styled.div`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 `;
 
-const Heading = styled.h2`
+export const Heading = styled.h2`
   font-size: 24px;
 `;
 
-const SubHeading = styled.h3`
+export const SubHeading = styled.h3`
   font-size: 18px;
   margin-top: 10px;
 `;
 
-const Paragraph = styled.p`
+export const Paragraph = styled.p`
   font-size: 16px;
   margin-top: 5px;
 `;
 
-const List = styled.ul`
+export const List = styled.ul`
   padding-left: 20px;
   list-style: disc;
 `;
-const HeadingList = styled.ul`
+export const HeadingList = styled.ul`
   list-style: none;
   padding-left: 20px;
 `;
 
-const ListItem = styled.li`
+export const ListItem = styled.li`
   margin-top: 5px;
 `;
 
@@ -73,35 +74,7 @@ export default function DiseaseDetail() {
               <Paragraph>{disease.definition}</Paragraph>
             </ListItem>
           )}
-          {disease.classification && (
-            <ListItem>
-              <SubHeading>Klassifikation:</SubHeading>
-              <Paragraph>{disease.classification}</Paragraph>
-            </ListItem>
-          )}
-          {disease.manifestations && disease.manifestations.length > 0 && (
-            <ListItem>
-              <SubHeading>Manifestationen:</SubHeading>
-              <List>
-                {disease.manifestations.map(
-                  (manifestation: Manifestation, index: number) => (
-                    <ListItem key={`manifestation_${index}`}>
-                      <SubHeading>{manifestation.name}</SubHeading>
-                      <List>
-                        {manifestation.details.map(
-                          (detail: string, index: number) => (
-                            <ListItem key={`manifestation-details_${index}`}>
-                              {detail}
-                            </ListItem>
-                          )
-                        )}
-                      </List>
-                    </ListItem>
-                  )
-                )}
-              </List>
-            </ListItem>
-          )}
+          <Classification disease={disease} />
           {disease.symptoms && (
             <ListItem>
               <SubHeading>Symptome:</SubHeading>
