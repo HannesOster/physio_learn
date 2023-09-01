@@ -1,8 +1,12 @@
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { diseases, Disease, Manifestation } from "../../lib/data";
-import Classification from "@/components/Header/Classification/Classifcation";
+import Classification from "@/components/Classification/Classifcation";
 import Symptoms from "@/components/Symptoms/Symptoms";
+import Complications from "@/components/Complications/Complications";
+import Prognosis from "@/components/Prognosis/Prognosis";
+import Treatment from "@/components/Treatment/Treatment";
+import Diagnosis from "@/components/Diagnosis/Diagnosis";
 
 export const Container = styled.div`
   display: flex;
@@ -77,116 +81,10 @@ export default function DiseaseDetail() {
           )}
           <Classification disease={disease} />
           <Symptoms disease={disease} />
-          {disease.diagnosis && (
-            <ListItem>
-              <SubHeading>Diagnose:</SubHeading>
-              <List>
-                {Array.isArray(disease.diagnosis) ? (
-                  disease.diagnosis.map(
-                    (diagnosisItem: string, index: number) => (
-                      <ListItem key={`diagnosis_${index}`}>
-                        {diagnosisItem}
-                      </ListItem>
-                    )
-                  )
-                ) : (
-                  <>
-                    {disease.diagnosis.blood && (
-                      <>
-                        <ListItem>
-                          <SubHeading>Diagnose (Blut):</SubHeading>
-                          <List>
-                            {disease.diagnosis.blood.map(
-                              (bloodDiagnosis: string, index: number) => (
-                                <ListItem key={`blood_${index}`}>
-                                  {bloodDiagnosis}
-                                </ListItem>
-                              )
-                            )}
-                          </List>
-                        </ListItem>
-                      </>
-                    )}
-                    {disease.diagnosis.urine && (
-                      <>
-                        <ListItem>
-                          <SubHeading>Diagnose (Urin):</SubHeading>
-                          <List>
-                            {disease.diagnosis.urine.map(
-                              (urineDiagnosis: string, index: number) => (
-                                <ListItem key={`urine_${index}`}>
-                                  {urineDiagnosis}
-                                </ListItem>
-                              )
-                            )}
-                          </List>
-                        </ListItem>
-                      </>
-                    )}
-                  </>
-                )}
-              </List>
-            </ListItem>
-          )}
-          {disease.treatment && (
-            <ListItem>
-              <SubHeading>Behandlung:</SubHeading>
-              <List>
-                {Array.isArray(disease.treatment) ? (
-                  disease.treatment.map(
-                    (treatmentItem: string, index: number) => (
-                      <ListItem key={`treatment_${index}`}>
-                        {treatmentItem}
-                      </ListItem>
-                    )
-                  )
-                ) : (
-                  <>
-                    {Object.keys(disease.treatment).map(
-                      (key: string, index: number) => (
-                        <ListItem key={`treatment_${index}`}>
-                          <SubHeading>{key}:</SubHeading>
-                          <List>
-                            {disease.treatment[key].map(
-                              (treatmentItem: string, index: number) => (
-                                <ListItem key={`treatment2_${index}`}>
-                                  {treatmentItem}
-                                </ListItem>
-                              )
-                            )}
-                          </List>
-                        </ListItem>
-                      )
-                    )}
-                  </>
-                )}
-              </List>
-            </ListItem>
-          )}
-          {disease.complications && disease.complications.length > 0 && (
-            <ListItem>
-              <SubHeading>Komplikationen:</SubHeading>
-              <List>
-                {disease.complications.map(
-                  (complication: string, index: number) => (
-                    <ListItem key={`complications_${index}`}>
-                      {complication}
-                    </ListItem>
-                  )
-                )}
-              </List>
-            </ListItem>
-          )}
-          {disease.prognosis && disease.prognosis.length > 0 && (
-            <ListItem>
-              <SubHeading>Prognose:</SubHeading>
-              <List>
-                {disease.prognosis.map((prognosis: string, index: number) => (
-                  <ListItem key={`prognosis_${index}`}>{prognosis}</ListItem>
-                ))}
-              </List>
-            </ListItem>
-          )}
+          <Diagnosis disease={disease} />
+          <Treatment disease={disease} />
+          <Complications disease={disease} />
+          <Prognosis disease={disease} />
         </HeadingList>
       </DiseaseDetailWrapper>
     </Container>
