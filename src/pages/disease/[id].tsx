@@ -57,8 +57,31 @@ export default function DiseaseDetail() {
     <Container>
       <DiseaseDetailWrapper>
         <Heading>{disease.name}</Heading>
-        <SubHeading>Beschreibung:</SubHeading>
-        <Paragraph>{disease.description}</Paragraph>
+        <SubHeading>Definition:</SubHeading>
+        <Paragraph>{disease.definition}</Paragraph>
+        {disease.classification && (
+          <>
+            <SubHeading>Klassifikation:</SubHeading>
+            <Paragraph>{disease.classification}</Paragraph>
+          </>
+        )}
+        {disease.manifestations && disease.manifestations.length > 0 && (
+          <>
+            <SubHeading>Manifestationen:</SubHeading>
+            <ul>
+              {disease.manifestations.map((manifestation) => (
+                <li key={manifestation.id}>
+                  <Paragraph>{manifestation.name}</Paragraph>
+                  <ul>
+                    {manifestation.details.map((detail, index) => (
+                      <li key={index}>{detail}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
         <SubHeading>Symptome:</SubHeading>
         <SymptomList>
           {disease.symptoms.map((symptom, index) => (
@@ -66,11 +89,37 @@ export default function DiseaseDetail() {
           ))}
         </SymptomList>
         <SubHeading>Diagnose:</SubHeading>
-        <Paragraph>{disease.diagnosis}</Paragraph>
+        <Paragraph>
+          {Array.isArray(disease.diagnosis)
+            ? disease.diagnosis.join(", ")
+            : disease.diagnosis}
+        </Paragraph>
         <SubHeading>Behandlung:</SubHeading>
-        <Paragraph>{disease.treatment}</Paragraph>
-        <SubHeading>Prävention:</SubHeading>
-        <Paragraph>{disease.prevention}</Paragraph>
+        <Paragraph>
+          {Array.isArray(disease.treatment)
+            ? disease.treatment.join(", ")
+            : disease.treatment}
+        </Paragraph>
+        {disease.complications && disease.complications.length > 0 && (
+          <>
+            <SubHeading>Komplikationen:</SubHeading>
+            <ul>
+              {disease.complications.map((complication, index) => (
+                <li key={index}>{complication}</li>
+              ))}
+            </ul>
+          </>
+        )}
+        {disease.prognosis && disease.prognosis.length > 0 && (
+          <>
+            <SubHeading>Prognose:</SubHeading>
+            <ul>
+              {disease.prognosis.map((prognosis, index) => (
+                <li key={index}>{prognosis}</li>
+              ))}
+            </ul>
+          </>
+        )}
       </DiseaseDetailWrapper>
     </Container>
   );

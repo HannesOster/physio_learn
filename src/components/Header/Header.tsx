@@ -11,7 +11,7 @@ const StyledHeader = styled.header`
   align-items: center;
 `;
 
-export default function Heading() {
+export default function Header() {
   return (
     <StyledHeader>
       <h1>Physio-Krankheitsbilder</h1>

@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import Heading from "../components/Header/Header";
 import GlobalStyle from "../styles";
+import Header from "../components/Header/Header";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -10,7 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Physio</title>
       </Head>
-      <Heading />
+      <Header />
       <Component {...pageProps} />
     </>
   );
