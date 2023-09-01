@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { diseases, Disease, Manifestation } from "../../lib/data";
 import Classification from "@/components/Header/Classification/Classifcation";
+import Symptoms from "@/components/Symptoms/Symptoms";
 
 export const Container = styled.div`
   display: flex;
@@ -75,43 +76,7 @@ export default function DiseaseDetail() {
             </ListItem>
           )}
           <Classification disease={disease} />
-          {disease.symptoms && (
-            <ListItem>
-              <SubHeading>Symptome:</SubHeading>
-              <List>
-                {Array.isArray(disease.symptoms) ? (
-                  disease.symptoms.map((symptom: string, index: number) => (
-                    <ListItem key={`symptoms_${index}`}>{symptom}</ListItem>
-                  ))
-                ) : (
-                  <>
-                    <ListItem>
-                      Haupt-Symptom: {disease.symptoms.mainSymptom}
-                    </ListItem>
-                    <ListItem>
-                      Ausstrahlung: {disease.symptoms.radiation}
-                    </ListItem>
-                    {disease.symptoms.accompanyingSymptoms &&
-                      disease.symptoms.accompanyingSymptoms.length > 0 && (
-                        <>
-                          {" "}
-                          <SubHeading>Begleitsymptome:</SubHeading>
-                          <List>
-                            {disease.symptoms.accompanyingSymptoms.map(
-                              (accompanyingSymptom: string, index: number) => (
-                                <ListItem key={`symptoms2_${index}`}>
-                                  {accompanyingSymptom}
-                                </ListItem>
-                              )
-                            )}
-                          </List>
-                        </>
-                      )}
-                  </>
-                )}
-              </List>
-            </ListItem>
-          )}
+          <Symptoms disease={disease} />
           {disease.diagnosis && (
             <ListItem>
               <SubHeading>Diagnose:</SubHeading>
