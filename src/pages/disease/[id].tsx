@@ -11,6 +11,7 @@ const Container = styled.div`
 `;
 
 const DiseaseDetailWrapper = styled.div`
+  margin-top: 100px;
   max-width: 800px;
   padding: 20px;
   background-color: #ffffff;
@@ -61,150 +62,190 @@ export default function DiseaseDetail() {
     <Container>
       <DiseaseDetailWrapper>
         <Heading>{disease.name}</Heading>
-        {disease.definition && (
-          <>
-            <SubHeading>Definition:</SubHeading>
-            <Paragraph>{disease.definition}</Paragraph>
-          </>
-        )}
-        {disease.classification && (
-          <>
-            <SubHeading>Klassifikation:</SubHeading>
-            <Paragraph>{disease.classification}</Paragraph>
-          </>
-        )}
-        {disease.manifestations && disease.manifestations.length > 0 && (
-          <>
-            <SubHeading>Manifestationen:</SubHeading>
-            <List>
-              {disease.manifestations.map(
-                (manifestation: Manifestation, index: number) => (
-                  <ListItem key={index}>
-                    <SubHeading>{manifestation.name}</SubHeading>
-                    <List>
-                      {manifestation.details.map(
-                        (detail: string, index: number) => (
-                          <ListItem key={index}>{detail}</ListItem>
-                        )
+        <List>
+          {disease.definition && (
+            <ListItem>
+              <SubHeading>Definition:</SubHeading>
+              <Paragraph>{disease.definition}</Paragraph>
+            </ListItem>
+          )}
+          {disease.classification && (
+            <ListItem>
+              <SubHeading>Klassifikation:</SubHeading>
+              <Paragraph>{disease.classification}</Paragraph>
+            </ListItem>
+          )}
+          {disease.manifestations && disease.manifestations.length > 0 && (
+            <ListItem>
+              <SubHeading>Manifestationen:</SubHeading>
+              <List>
+                {disease.manifestations.map(
+                  (manifestation: Manifestation, index: number) => (
+                    <ListItem key={`manifestation_${index}`}>
+                      <SubHeading>{manifestation.name}</SubHeading>
+                      <List>
+                        {manifestation.details.map(
+                          (detail: string, index: number) => (
+                            <ListItem key={`manifestation-details_${index}`}>
+                              {detail}
+                            </ListItem>
+                          )
+                        )}
+                      </List>
+                    </ListItem>
+                  )
+                )}
+              </List>
+            </ListItem>
+          )}
+          {disease.symptoms && (
+            <ListItem>
+              <SubHeading>Symptome:</SubHeading>
+              <List>
+                {Array.isArray(disease.symptoms) ? (
+                  disease.symptoms.map((symptom: string, index: number) => (
+                    <ListItem key={`symptoms_${index}`}>{symptom}</ListItem>
+                  ))
+                ) : (
+                  <>
+                    <ListItem>
+                      Haupt-Symptom: {disease.symptoms.mainSymptom}
+                    </ListItem>
+                    <ListItem>
+                      Ausstrahlung: {disease.symptoms.radiation}
+                    </ListItem>
+                    {disease.symptoms.accompanyingSymptoms &&
+                      disease.symptoms.accompanyingSymptoms.length > 0 && (
+                        <>
+                          {" "}
+                          <SubHeading>Begleitsymptome:</SubHeading>
+                          <List>
+                            {disease.symptoms.accompanyingSymptoms.map(
+                              (accompanyingSymptom: string, index: number) => (
+                                <ListItem key={`symptoms2_${index}`}>
+                                  {accompanyingSymptom}
+                                </ListItem>
+                              )
+                            )}
+                          </List>
+                        </>
                       )}
-                    </List>
-                  </ListItem>
-                )
-              )}
-            </List>
-          </>
-        )}
-        {disease.symptoms && (
-          <>
-            <SubHeading>Symptome:</SubHeading>
-            <List>
-              {Array.isArray(disease.symptoms) ? (
-                disease.symptoms.map((symptom: string, index: number) => (
-                  <ListItem key={index}>{symptom}</ListItem>
-                ))
-              ) : (
-                <>
-                  <ListItem>
-                    Haupt-Symptom: {disease.symptoms.mainSymptom}
-                  </ListItem>
-                  <ListItem>
-                    Ausstrahlung: {disease.symptoms.radiation}
-                  </ListItem>
-                  {disease.symptoms.accompanyingSymptoms &&
-                    disease.symptoms.accompanyingSymptoms.length > 0 && (
+                  </>
+                )}
+              </List>
+            </ListItem>
+          )}
+          {disease.diagnosis && (
+            <ListItem>
+              <SubHeading>Diagnose:</SubHeading>
+              <List>
+                {Array.isArray(disease.diagnosis) ? (
+                  disease.diagnosis.map(
+                    (diagnosisItem: string, index: number) => (
+                      <ListItem key={`diagnosis_${index}`}>
+                        {diagnosisItem}
+                      </ListItem>
+                    )
+                  )
+                ) : (
+                  <>
+                    {disease.diagnosis.blood && (
                       <>
-                        {" "}
-                        <SubHeading>Begleitsymptome:</SubHeading>
-                        <List>
-                          {disease.symptoms.accompanyingSymptoms.map(
-                            (accompanyingSymptom: string, index: number) => (
-                              <ListItem key={index}>
-                                {accompanyingSymptom}
-                              </ListItem>
-                            )
-                          )}
-                        </List>
+                        <ListItem>
+                          <SubHeading>Diagnose (Blut):</SubHeading>
+                          <List>
+                            {disease.diagnosis.blood.map(
+                              (bloodDiagnosis: string, index: number) => (
+                                <ListItem key={`blood_${index}`}>
+                                  {bloodDiagnosis}
+                                </ListItem>
+                              )
+                            )}
+                          </List>
+                        </ListItem>
                       </>
                     )}
-                </>
-              )}
-            </List>
-          </>
-        )}
-        {disease.diagnosis && (
-          <>
-            <SubHeading>Diagnose:</SubHeading>
-            <Paragraph>
-              {Array.isArray(disease.diagnosis) ? (
-                disease.diagnosis.join(", ")
-              ) : (
-                <>
-                  {disease.diagnosis.blood && (
-                    <>
-                      <SubHeading>Diagnose (Blut):</SubHeading>
-                      <Paragraph>
-                        {disease.diagnosis.blood.join(", ")}
-                      </Paragraph>
-                    </>
-                  )}
-                  {disease.diagnosis.urine && (
-                    <>
-                      <SubHeading>Diagnose (Urin):</SubHeading>
-                      <Paragraph>
-                        {disease.diagnosis.urine.join(", ")}
-                      </Paragraph>
-                    </>
-                  )}
-                </>
-              )}
-            </Paragraph>
-          </>
-        )}
-        {disease.treatment && (
-          <>
-            <SubHeading>Behandlung:</SubHeading>
-            <Paragraph>
-              {Array.isArray(disease.treatment) ? (
-                disease.treatment.join(", ")
-              ) : (
-                <>
-                  {Object.keys(disease.treatment).map(
-                    (key: string, index: number) => (
-                      <div key={index}>
-                        <SubHeading>{key}:</SubHeading>
-                        <Paragraph>
-                          {disease.treatment[key].join(", ")}
-                        </Paragraph>
-                      </div>
+                    {disease.diagnosis.urine && (
+                      <>
+                        <ListItem>
+                          <SubHeading>Diagnose (Urin):</SubHeading>
+                          <List>
+                            {disease.diagnosis.urine.map(
+                              (urineDiagnosis: string, index: number) => (
+                                <ListItem key={`urine_${index}`}>
+                                  {urineDiagnosis}
+                                </ListItem>
+                              )
+                            )}
+                          </List>
+                        </ListItem>
+                      </>
+                    )}
+                  </>
+                )}
+              </List>
+            </ListItem>
+          )}
+          {disease.treatment && (
+            <ListItem>
+              <SubHeading>Behandlung:</SubHeading>
+              <List>
+                {Array.isArray(disease.treatment) ? (
+                  disease.treatment.map(
+                    (treatmentItem: string, index: number) => (
+                      <ListItem key={`treatment_${index}`}>
+                        {treatmentItem}
+                      </ListItem>
                     )
-                  )}
-                </>
-              )}
-            </Paragraph>
-          </>
-        )}
-        {disease.complications && disease.complications.length > 0 && (
-          <>
-            <SubHeading>Komplikationen:</SubHeading>
-            <List>
-              {disease.complications.map(
-                (complication: string, index: number) => (
-                  <ListItem key={index}>{complication}</ListItem>
-                )
-              )}
-            </List>
-          </>
-        )}
-        {disease.prognosis && disease.prognosis.length > 0 && (
-          <>
-            <SubHeading>Prognose:</SubHeading>
-            <List>
-              {disease.prognosis.map((prognosis: string, index: number) => (
-                <ListItem key={index}>{prognosis}</ListItem>
-              ))}
-            </List>
-          </>
-        )}
+                  )
+                ) : (
+                  <>
+                    {Object.keys(disease.treatment).map(
+                      (key: string, index: number) => (
+                        <ListItem key={`treatment_${index}`}>
+                          <SubHeading>{key}:</SubHeading>
+                          <List>
+                            {disease.treatment[key].map(
+                              (treatmentItem: string, index: number) => (
+                                <ListItem key={`treatment2_${index}`}>
+                                  {treatmentItem}
+                                </ListItem>
+                              )
+                            )}
+                          </List>
+                        </ListItem>
+                      )
+                    )}
+                  </>
+                )}
+              </List>
+            </ListItem>
+          )}
+          {disease.complications && disease.complications.length > 0 && (
+            <ListItem>
+              <SubHeading>Komplikationen:</SubHeading>
+              <List>
+                {disease.complications.map(
+                  (complication: string, index: number) => (
+                    <ListItem key={`complications_${index}`}>
+                      {complication}
+                    </ListItem>
+                  )
+                )}
+              </List>
+            </ListItem>
+          )}
+          {disease.prognosis && disease.prognosis.length > 0 && (
+            <ListItem>
+              <SubHeading>Prognose:</SubHeading>
+              <List>
+                {disease.prognosis.map((prognosis: string, index: number) => (
+                  <ListItem key={`prognosis_${index}`}>{prognosis}</ListItem>
+                ))}
+              </List>
+            </ListItem>
+          )}
+        </List>
       </DiseaseDetailWrapper>
     </Container>
   );

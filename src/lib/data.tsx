@@ -17,6 +17,9 @@ export interface Diagnosis {
 export interface Treatment {
   [key: string]: string[];
 }
+export interface TreatmentDetails {
+  [key: string]: string[];
+}
 
 export interface Disease {
   id: string;
@@ -26,7 +29,7 @@ export interface Disease {
   manifestations?: Manifestation[];
   symptoms: string[] | SymptomDetails;
   diagnosis: string[] | Diagnosis;
-  treatment: string[] | Treatment;
+  treatment: string[] | any;
   complications?: string[];
   prognosis?: string[];
   causes?: string[];
@@ -208,5 +211,74 @@ export const diseases: Disease[] = [
     stages: {},
     stoneTypes: [],
     riskFactors: [],
+  },
+  {
+    id: "7",
+    name: "Grawitz Tumor (Hypernephrom, Nierenzellkarzinom)",
+    definition:
+      "Maligner Tumor der Erwachsenen. Männer sind hierbei häufiger betroffen als Frauen (2:1). Sehr frühes Wachstum in das umliegende Gewebe, schnelle Metastasierung in Lunge, Leber, Knochen und Gehirn.",
+    symptoms: [
+      "Keine Frühsymptome",
+      "Plötzlich auftretende schmerzlose Blutung beim Urinieren",
+      "Hämaturie",
+      "Unklares Fieber",
+      "Flankenschmerzen",
+    ],
+    diagnosis: ["Zufallsbefund"],
+    treatment: ["Radikale, operative Entfernung des Tumors"],
+    prognosis: ["5-Jahres-Überlebensrate zwischen 5 und 70%"],
+  },
+  {
+    id: "8",
+    name: "Akute Pyelonephritis",
+    definition:
+      "Akute, bakterielle Entzündung des Nierenbeckens, meist mit Beteiligung des Nierenparenchyms. Frauen sind 3-mal häufiger betroffen.",
+    causes: [
+      "S. Zystitis",
+      "Am häufigsten in der Schwangerschaft und bei Nierensteinleiden",
+    ],
+    symptoms: [
+      "Flankenschmerz",
+      "Klopfschmerz im Nierenlager (meist einseitig)",
+      "Fieber (in schweren Fällen Schüttelfrost)",
+    ],
+    diagnosis: [
+      "Urinstatus wie bei Zystitis",
+      "Blutbild (BB)",
+      "Leukozytose",
+      "Erhöhte BSG (Blutsenkungsgeschwindigkeit)",
+      "Sonographie zur Ursachenfindung",
+    ],
+    treatment: [
+      "Antibiose",
+      "Analgesie (Schmerzlinderung)",
+      "Fiebersenkung",
+      "Beseitigung der Abflussstörung",
+    ],
+  },
+  {
+    id: "10",
+    name: "Akute Zystitis",
+    definition:
+      "Akute, bakterielle Entzündung der Harnblase. Aufsteigende Keime entlang der Harnröhre, besonders E. coli. Häufig im Kindesalter, bei sexuell aktiven Frauen und Männern im höheren Alter.",
+    causes: [
+      "Honeymoon",
+      "Schwangerschaft",
+      "Abflusshindernisse",
+      "Durchnässung, Verkühlung",
+      "Blasenkatheter",
+    ],
+    symptoms: ["Pollakisurie", "Dysurie", "Kein Fieber, kein Flankenschmerz"],
+    diagnosis: [
+      "Urinstatus",
+      "Leukozyten",
+      "Erythrozyten",
+      "Bakteriurie (>100.000 Keime/ml)",
+    ],
+    treatment: ["Antibiose", "Wärme", "Vermehrtes Trinken"],
+    prognosis: [
+      "Eine akute Zystitis heilt in der Regel nach wenigen Tagen folgenlos aus.",
+    ],
+    complications: ["Aufsteigende Infektion"],
   },
 ];
