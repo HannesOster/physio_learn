@@ -35,7 +35,11 @@ const Paragraph = styled.p`
 `;
 
 const List = styled.ul`
+  padding-left: 20px;
   list-style: disc;
+`;
+const HeadingList = styled.ul`
+  list-style: none;
   padding-left: 20px;
 `;
 
@@ -62,7 +66,7 @@ export default function DiseaseDetail() {
     <Container>
       <DiseaseDetailWrapper>
         <Heading>{disease.name}</Heading>
-        <List>
+        <HeadingList>
           {disease.definition && (
             <ListItem>
               <SubHeading>Definition:</SubHeading>
@@ -245,7 +249,7 @@ export default function DiseaseDetail() {
               </List>
             </ListItem>
           )}
-        </List>
+        </HeadingList>
       </DiseaseDetailWrapper>
     </Container>
   );
