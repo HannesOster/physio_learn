@@ -25,7 +25,10 @@ export default function Symptoms({ disease }: ClassificationProps) {
                   Haupt-Symptom: {disease.symptoms.mainSymptom}
                   <input type="checkbox" />
                 </ListItem>
-                <ListItem>Ausstrahlung: {disease.symptoms.radiation}</ListItem>
+                <ListItem>
+                  Ausstrahlung: {disease.symptoms.radiation}
+                  <input type="checkbox" />
+                </ListItem>
                 {disease.symptoms.accompanyingSymptoms &&
                   disease.symptoms.accompanyingSymptoms.length > 0 && (
                     <>
