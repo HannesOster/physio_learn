@@ -14,7 +14,12 @@ export default function Diagnosis({ disease }: ClassificationProps) {
           <List>
             {Array.isArray(disease.diagnosis) ? (
               disease.diagnosis.map((diagnosisItem: string, index: number) => (
-                <ListItem key={`diagnosis_${index}`}>{diagnosisItem}</ListItem>
+                <ListItem key={`diagnosis_${index}`}>
+                  <label>
+                    {diagnosisItem}
+                    <input type="checkbox" />
+                  </label>
+                </ListItem>
               ))
             ) : (
               <>
@@ -26,7 +31,10 @@ export default function Diagnosis({ disease }: ClassificationProps) {
                         {disease.diagnosis.blood.map(
                           (bloodDiagnosis: string, index: number) => (
                             <ListItem key={`blood_${index}`}>
-                              {bloodDiagnosis}
+                              <label>
+                                {bloodDiagnosis}
+                                <input type="checkbox" />
+                              </label>
                             </ListItem>
                           )
                         )}
@@ -42,7 +50,10 @@ export default function Diagnosis({ disease }: ClassificationProps) {
                         {disease.diagnosis.urine.map(
                           (urineDiagnosis: string, index: number) => (
                             <ListItem key={`urine_${index}`}>
-                              {urineDiagnosis}
+                              <label>
+                                {urineDiagnosis}
+                                <input type="checkbox" />
+                              </label>
                             </ListItem>
                           )
                         )}

@@ -76,7 +76,10 @@ export default function DiseaseDetail() {
           {disease.definition && (
             <ListItem>
               <SubHeading>Definition:</SubHeading>
-              <Paragraph>{disease.definition}</Paragraph>
+              <Paragraph>
+                {disease.definition}
+                <input type="checkbox" />
+              </Paragraph>
             </ListItem>
           )}
           <Classification disease={disease} />

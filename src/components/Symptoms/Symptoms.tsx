@@ -14,12 +14,16 @@ export default function Symptoms({ disease }: ClassificationProps) {
           <List>
             {Array.isArray(disease.symptoms) ? (
               disease.symptoms.map((symptom: string, index: number) => (
-                <ListItem key={`symptoms_${index}`}>{symptom}</ListItem>
+                <ListItem key={`symptoms_${index}`}>
+                  {symptom}
+                  <input type="checkbox" />
+                </ListItem>
               ))
             ) : (
               <>
                 <ListItem>
                   Haupt-Symptom: {disease.symptoms.mainSymptom}
+                  <input type="checkbox" />
                 </ListItem>
                 <ListItem>Ausstrahlung: {disease.symptoms.radiation}</ListItem>
                 {disease.symptoms.accompanyingSymptoms &&
@@ -32,6 +36,7 @@ export default function Symptoms({ disease }: ClassificationProps) {
                           (accompanyingSymptom: string, index: number) => (
                             <ListItem key={`symptoms2_${index}`}>
                               {accompanyingSymptom}
+                              <input type="checkbox" />
                             </ListItem>
                           )
                         )}

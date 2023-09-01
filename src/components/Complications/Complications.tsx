@@ -16,6 +16,7 @@ export default function Complications({ disease }: ClassificationProps) {
               (complication: string, index: number) => (
                 <ListItem key={`complications_${index}`}>
                   {complication}
+                  <input type="checkbox" />
                 </ListItem>
               )
             )}

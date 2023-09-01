@@ -13,7 +13,10 @@ export default function Prognosis({ disease }: ClassificationProps) {
           <SubHeading>Prognose:</SubHeading>
           <List>
             {disease.prognosis.map((prognosis: string, index: number) => (
-              <ListItem key={`prognosis_${index}`}>{prognosis}</ListItem>
+              <ListItem key={`prognosis_${index}`}>
+                {prognosis}
+                <input type="checkbox" />
+              </ListItem>
             ))}
           </List>
         </ListItem>

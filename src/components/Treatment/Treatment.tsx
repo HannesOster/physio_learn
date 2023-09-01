@@ -14,7 +14,10 @@ export default function Treatment({ disease }: ClassificationProps) {
           <List>
             {Array.isArray(disease.treatment) ? (
               disease.treatment.map((treatmentItem: string, index: number) => (
-                <ListItem key={`treatment_${index}`}>{treatmentItem}</ListItem>
+                <ListItem key={`treatment_${index}`}>
+                  {treatmentItem}
+                  <input type="checkbox" />
+                </ListItem>
               ))
             ) : (
               <>
@@ -27,6 +30,7 @@ export default function Treatment({ disease }: ClassificationProps) {
                           (treatmentItem: string, index: number) => (
                             <ListItem key={`treatment2_${index}`}>
                               {treatmentItem}
+                              <input type="checkbox" />
                             </ListItem>
                           )
                         )}

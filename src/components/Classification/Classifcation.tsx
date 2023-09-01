@@ -11,7 +11,10 @@ export default function Classification({ disease }: ClassificationProps) {
       {disease.classification && (
         <ListItem>
           <SubHeading>Klassifikation:</SubHeading>
-          <Paragraph>{disease.classification}</Paragraph>
+          <Paragraph>
+            {disease.classification}
+            <input type="checkbox" />
+          </Paragraph>
         </ListItem>
       )}
       {disease.manifestations && disease.manifestations.length > 0 && (
@@ -27,6 +30,7 @@ export default function Classification({ disease }: ClassificationProps) {
                       (detail: string, index: number) => (
                         <ListItem key={`manifestation-details_${index}`}>
                           {detail}
+                          <input type="checkbox" />
                         </ListItem>
                       )
                     )}
