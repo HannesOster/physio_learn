@@ -159,18 +159,15 @@ export const diseases: Disease[] = [
       "Entstehen durch Auskristallisieren von Salzen",
       "Diese liegen in zu hoher Konzentration im Harn vor",
     ],
-    symptoms: {
-      mainSymptom:
-        "Nieren- bzw. Harnleiterkolik - Heftigster an- und abschwellender Schmerz",
-      radiation:
-        "Ausstrahlung in den Rücken, den Unterbauch, bis in den Genitalbereich",
-      accompanyingSymptoms: [
-        "Übelkeit",
-        "Brechreiz",
-        "Reflektorisch fehlender Wind- und Stuhlabgang",
-        "Hämaturie, ggf. sogar Makrohämaturie",
-      ],
-    },
+    symptoms: [
+      "Nieren- bzw. Harnleiterkolik - Heftigster an- und abschwellender Schmerz",
+      "Ausstrahlung in den Rücken, den Unterbauch, bis in den Genitalbereich",
+      "Übelkeit",
+      "Brechreiz",
+      "Reflektorisch fehlender Wind- und Stuhlabgang",
+      "Hämaturie, ggf. sogar Makrohämaturie",
+    ],
+
     complications: ["Infektionen", "Harnstau"],
     diagnosis: ["Ultraschall"],
     treatment: [
@@ -206,11 +203,6 @@ export const diseases: Disease[] = [
       "Chemo und Radiatio (Chemotherapie und Strahlentherapie)",
     ],
     prognosis: ["5-Jahres-Überlebensrate ca. 90%"],
-    manifestations: [],
-    complications: [],
-    stages: {},
-    stoneTypes: [],
-    riskFactors: [],
   },
   {
     id: "7",
