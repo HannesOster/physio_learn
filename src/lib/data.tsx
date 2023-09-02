@@ -27,13 +27,12 @@ export interface Disease {
   definition?: string;
   classification?: string;
   manifestations?: Manifestation[];
-  symptoms: string[] | SymptomDetails;
-  diagnosis: string[] | Diagnosis;
-  treatment: string[] | any;
+  symptoms: string[];
+  diagnosis: string[];
+  treatment: string[];
   complications?: string[];
   prognosis?: string[];
   causes?: string[];
-  stages?: { [key: string]: any };
   stoneTypes?: string[];
   riskFactors?: string[];
 }
@@ -83,9 +82,6 @@ export const diseases: Disease[] = [
       "Bei Erwachsenen bis zu 50% Übergang, möglicherweise zu RPGN",
     ],
     causes: ["Unbekannt"],
-    stages: {},
-    stoneTypes: [],
-    riskFactors: [],
   },
   {
     id: "2",
@@ -101,10 +97,7 @@ export const diseases: Disease[] = [
       "Vaskulitiden",
     ],
     symptoms: ["Ödeme"],
-    diagnosis: {
-      blood: ["Hyperlipoproteinämie", "Hypoproteinämie"],
-      urine: ["Proteinurie"],
-    },
+    diagnosis: ["Hyperlipoproteinämie", "Hypoproteinämie", "Proteinurie"],
     treatment: [
       "Behandlung der Grunderkrankung",
       "Körperliche Schonung",
@@ -115,12 +108,6 @@ export const diseases: Disease[] = [
       "RR Kontrollen",
       "Hypercholesterinämie Behandlung",
     ],
-    manifestations: [],
-    complications: [],
-    prognosis: [],
-    stages: {},
-    stoneTypes: [],
-    riskFactors: [],
   },
   {
     id: "3",
@@ -131,20 +118,13 @@ export const diseases: Disease[] = [
       "Kombinationen aus ASS, Paracetamol und Coffein",
     ],
     symptoms: ["Anfangs keine Beschwerden", "Später Flankenschmerz"],
-    diagnosis: {
-      urine: ["Hämaturie"],
-      blood: ["Abakterielle Leukozyturie"],
-    },
+    diagnosis: ["Hämaturie", "Abakterielle Leukozyturie"],
+
     complications: ["Chronische Niereninsuffizienz"],
     treatment: [
       "Absetzen der Noxen",
       "Früherkennung zur Vermeidung einer chronischen Niereninsuffizienz",
     ],
-    manifestations: [],
-    prognosis: [],
-    stages: {},
-    stoneTypes: [],
-    riskFactors: [],
   },
   {
     id: "4",
@@ -180,10 +160,6 @@ export const diseases: Disease[] = [
       "Litholyse",
       "Stoßwellenlithotripsie",
     ],
-    manifestations: [],
-    prognosis: [],
-    stages: {},
-    riskFactors: [],
   },
   {
     id: "6",

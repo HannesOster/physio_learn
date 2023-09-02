@@ -1,5 +1,5 @@
-import { Manifestation, Disease } from "@/lib/data";
-import { List, ListItem, Paragraph, SubHeading } from "@/pages/disease/[id]";
+import { Disease } from "@/lib/data";
+import { List, ListItem, SubHeading } from "@/pages/disease/[id]";
 
 interface ClassificationProps {
   disease: Disease;
